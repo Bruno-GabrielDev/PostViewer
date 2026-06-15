@@ -2,15 +2,18 @@
 
 Aplicativo Android que consome a API pública JSONPlaceholder para exibir posts e comentários, com suporte a comentários locais persistidos via Room.
 
-## 📋 Informações do Projeto
+## 👤 Identificação
 
 | Item | Detalhe |
 |------|---------|
-| Aluno | sc3044122 |
+| Aluno | Bruno Gabriel — sc3044122 |
+| Disciplina | Dispositivos Móveis |
 | Pacote | br.edu.ifsp.scl.sc3044122.postviewer |
 | Min SDK | 26 (Android 8 / Oreo) |
-| Linguagem | Kotlin |
-| UI | Jetpack Compose |
+
+## 📋 Descrição
+
+O PostViewer consome a API pública [JSONPlaceholder](https://jsonplaceholder.typicode.com/) para listar posts e exibir seus comentários. O usuário também pode adicionar comentários locais que são persistidos no dispositivo via Room e aparecem junto aos comentários da API.
 
 ## ⚙️ Funcionalidades
 
@@ -27,6 +30,27 @@ Aplicativo Android que consome a API pública JSONPlaceholder para exibir posts 
 - Campo para adicionar novo comentário local
 - Comentários locais persistem entre sessões
 
+## ▶️ Como Rodar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/Bruno-GabrielDev/PostViewer.git
+```
+2. Abra no **Android Studio** (Hedgehog ou superior)
+3. Aguarde o sync do Gradle
+4. Rode em um emulador ou dispositivo com Android 8+
+
+## 🛠️ Tecnologias e Bibliotecas
+
+| Tecnologia | Uso |
+|---|---|
+| Jetpack Compose | Interface do usuário |
+| Navigation Compose | Navegação entre telas |
+| ViewModel + StateFlow | Gerenciamento de estado |
+| Room | Persistência local de comentários |
+| Retrofit + Gson | Consumo da API REST |
+| KSP | Geração de código do Room |
+
 ## 🏗️ Arquitetura
 
 ```
@@ -42,29 +66,15 @@ postviewer/
 └── di/AppModule        ← Injeção de dependências manual
 ```
 
-## 🛠️ Tecnologias
-
-| Tecnologia | Uso |
-|---|---|
-| Jetpack Compose | Interface do usuário |
-| Navigation Compose | Navegação entre telas |
-| ViewModel + StateFlow | Gerenciamento de estado |
-| Room | Persistência local de comentários |
-| Retrofit + Gson | Consumo da API REST |
-
-## ▶️ Como Rodar
-
-1. Clone o repositório
-2. Abra no **Android Studio** (Hedgehog ou superior)
-3. Aguarde o sync do Gradle
-4. Rode em um emulador ou dispositivo com Android 8+
-
 ## 💡 Decisões de Design
 
 - **Arquitetura em camadas** (data / domain / presentation) para separação de responsabilidades
 - **StateFlow** para estado reativo na UI sem precisar de LiveData
 - **Flow no Room** para observar mudanças nos comentários locais em tempo real
+- **KSP** no lugar de KAPT para geração de código mais rápida
 - **Injeção manual** sem Hilt/Koin para manter o projeto simples
 - **DTOs separados** dos modelos de domínio para desacoplar API da lógica de negócio
-- **KSP no lugar de KAPT para o Room**. KSP é significativamente mais rápido e é a recomendação oficial atual da equipe do
-AndroidX.
+
+## 🖼️ Prints das Telas
+
+Os prints do app em execução estão na pasta [`docs/`](./docs).
