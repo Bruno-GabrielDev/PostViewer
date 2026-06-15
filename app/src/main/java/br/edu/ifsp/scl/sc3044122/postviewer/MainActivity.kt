@@ -15,7 +15,6 @@ import br.edu.ifsp.scl.sc3044122.postviewer.presentation.detail.DetailScreen
 import br.edu.ifsp.scl.sc3044122.postviewer.presentation.detail.DetailViewModel
 import br.edu.ifsp.scl.sc3044122.postviewer.presentation.posts.PostsScreen
 import br.edu.ifsp.scl.sc3044122.postviewer.presentation.posts.PostsViewModel
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
