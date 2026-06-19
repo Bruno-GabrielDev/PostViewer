@@ -16,8 +16,15 @@ class PostRepository(
     private val api: ApiService,
     private val db: AppDatabase
 ) {
-    suspend fun getPosts(): List<Post> =
-        api.getPosts().map { it.toDomain() }
+    fun getPostsWithCommentCounts(): Flow<List<Post>> {
+        return db.localCommentDao().getCommentCountsByPost().map { counts ->
+            val countsMap = counts.associate { it.postId to it.count }
+            val posts = api.getPosts().map { it.toDomain() }
+            posts.map { post ->
+                post.copy(localCommentCount = countsMap[post.id] ?: 0)
+            }
+        }
+    }
 
     suspend fun getApiComments(postId: Int): List<Comment> =
         api.getComments(postId).map { it.toDomain() }

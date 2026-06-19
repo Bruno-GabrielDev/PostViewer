@@ -172,3 +172,4 @@ fun CommentItem(comment: Comment) {
         Text(text = comment.body, fontSize = 14.sp)
     }
 }
+

@@ -68,6 +68,7 @@ fun PostsScreen(
                         Button(onClick = { viewModel.loadPosts() }) {
                             Text("Tentar novamente")
                         }
+
                     }
                 }
             }
@@ -78,24 +79,31 @@ fun PostsScreen(
 /**
  * Item individual de post na lista.
  */
-@Composable
-fun PostItem(post: Post, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "#${post.id} ${post.title}",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = post.body.take(80) + "...",
-            fontSize = 13.sp,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+    @Composable
+    fun PostItem(post: Post, onClick: () -> Unit) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onClick() }
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "#${post.id} ${post.title}",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = post.body.take(80) + "...",
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "💬 ${post.localCommentCount} " ,
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
     }
-}
+

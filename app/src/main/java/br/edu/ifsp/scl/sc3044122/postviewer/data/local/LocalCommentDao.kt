@@ -25,4 +25,9 @@ data class LocalCommentEntity(
         body = body,
         isLocal = true
     )
+
+    data class PostCommentCount(
+        val postId: Int,
+        val count: Int
+    )
 }

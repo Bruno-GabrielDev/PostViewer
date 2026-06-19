@@ -26,8 +26,9 @@ class PostsViewModel(private val repository: PostRepository) : ViewModel() {
         viewModelScope.launch {
             _uiState.value = PostsUiState.Loading
             try {
-                val posts = repository.getPosts()
-                _uiState.value = PostsUiState.Success(posts)
+                repository.getPostsWithCommentCounts().collect { posts ->
+                    _uiState.value = PostsUiState.Success(posts)
+                }
             } catch (e: Exception) {
                 _uiState.value = PostsUiState.Error("Erro ao carregar posts: ${e.message}")
             }
